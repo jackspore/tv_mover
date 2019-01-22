@@ -13,7 +13,11 @@ for fd in folders:
         os.chdir(os.path.join(curDir, fd)) # change into subdirectory
         for f in files:
             print(f)
-            fp, fn = os.path.split(f)
-            shutil.move(f, curDir)
+            #fp, fn = os.path.split(f)
+            try:
+                shutil.move(f, curDir)
+            except:
+                pass # just skip if already exists in curDir
+            
         os.chdir(curDir) # return to parent directory
 
